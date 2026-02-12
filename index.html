@@ -129,20 +129,19 @@
         <li>Stáhněte ZIP soubor výše</li>
         <li>Rozbalte a přesuňte <strong>Medical Devices.app</strong> do složky Aplikace</li>
         <li>Při prvním spuštění: pravý klik → Otevřít (kvůli Gatekeeper)</li>
-        <li>Aplikace se aktualizuje automaticky při každém spuštění</li>
+        <li>Aplikace při spuštění upozorní na novou verzi — stáhněte ji z této stránky</li>
       </ol>
     </div>
 
     <p class="footer">
-      Aplikace se automaticky aktualizuje na nejnovější verzi.<br>
-      Stačí stáhnout jednou, pak už se vše děje samo.
+      Aplikace při spuštění zkontroluje dostupnost nové verze.
     </p>
   </div>
 
   <script>
     // Fetch latest release info from public releases JSON
     // This file is updated by the CI workflow
-    fetch('releases.json')
+    fetch('releases.json?t=' + Date.now())
       .then(r => r.json())
       .then(data => {
         document.getElementById('version').textContent = data.version;
